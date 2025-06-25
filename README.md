@@ -1,12 +1,80 @@
-# React + Vite
+# React Router App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application demonstrating nested routing with **React Router v6**, dynamic routes, loaders, and component-based layouts.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **React Router v6** setup using `createBrowserRouter` and `createRoutesFromElements`
+* Nested routes with a common `Layout`
+* Dynamic user route (`/user/:userid`)
+* Loader function for fetching GitHub data before rendering
+* 404 page handling with a wildcard route
 
-## Expanding the ESLint configuration
+## 📁 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── components/
+│   ├── About/
+│   │   └── About.jsx
+│   ├── Contact/
+│   │   └── Contact.jsx
+│   ├── Github/
+│   │   └── github.jsx
+│   ├── Home/
+│   │   └── Home.jsx
+│   └── User/
+│       └── User.jsx
+├── App.jsx
+├── Layout.jsx
+├── index.css
+└── index.js
+```
+
+## 🛠 Installation
+
+1️⃣ Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+2️⃣ Install dependencies:
+
+```bash
+npm install
+```
+
+3️⃣ Start the development server:
+
+```bash
+npm run dev
+```
+
+## 🌐 Routes
+
+| Path            | Component   | Description                           |
+| --------------- | ----------- | ------------------------------------- |
+| `/`             | `Home`      | Home page                             |
+| `/about`        | `About`     | About page                            |
+| `/contact`      | `Contact`   | Contact page                          |
+| `/github`       | `Github`    | GitHub page (with data loader)        |
+| `/user/`        | `User`      | User page                             |
+| `/user/:userid` | `User`      | Dynamic user page with `userid` param |
+| `*`             | `Not Found` | Fallback for unmatched routes         |
+
+## 📝 Example Loader
+
+```jsx
+<Route loader={githubInfoLoader} path="github" element={<Github />} />
+```
+
+> The loader pre-fetches data before rendering the `Github` component.
+
+## 📦 Built With
+
+* [React](https://reactjs.org/)
+* [React Router v6](https://reactrouter.com/en/main)
+
+##
